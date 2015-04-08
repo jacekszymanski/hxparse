@@ -1,0 +1,3 @@
+build-each.hxml
+-neko bin/hxparse.n
+-cmd neko bin/hxparse.n

@@ -1,0 +1,10 @@
+language: haxe
+haxe:
+  - development
+
+install:
+  - haxelib install unifill
+
+hxml:
+  - build-neko.hxml
+  - build-macro.hxml

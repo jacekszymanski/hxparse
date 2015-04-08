@@ -22,6 +22,7 @@ class Test {
 		trace( tokens );
 
 		var numTests = 0;
+		var fails = 0;
 		function eq(expected:Float, s:String) {
 			++numTests;
 			var lexer = new ArithmeticParser.ArithmeticLexer(byte.ByteData.ofString(s));
@@ -30,6 +31,7 @@ class Test {
 			var result = ArithmeticParser.ArithmeticEvaluator.eval(parser.parse());
 			if (expected != result) {
 				trace('Error in "$s"; expected $expected but was $result');
+				fails++;
 			}
 		}
 		eq(1, "1");
@@ -46,6 +48,12 @@ class Test {
 		eq(8, "2*(3-(2+(-3)))");
 
 		var diff = haxe.Timer.stamp() - t0;
-		trace('Done $numTests tests in $diff ms');
+		trace('Done $numTests tests in $diff ms, $fails fails.');
+
+		#if sys
+		Sys.exit(if (fails > 0) 1 else 0);
+		#else
+		trace("success: " + Std.string(fails == 0));
+		#end
 	}
 }
