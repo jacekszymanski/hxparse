@@ -5,6 +5,9 @@ haxe:
 install:
   - haxelib install unifill
 
-hxml:
-  - build-neko.hxml
-  - build-macro.hxml
+matrix:
+  include:
+    - hxml:
+      - build-neko.hxml
+    - hxml:
+      - build-macro.hxml
