@@ -1,13 +1,13 @@
 language: haxe
-haxe:
-  - development
 
 install:
   - haxelib install unifill
 
 matrix:
   include:
-    - hxml:
-      - build-neko.hxml
-    - hxml:
-      - build-macro.hxml
+    - haxe: development
+      hxml:
+        - build-neko.hxml
+    - haxe: development
+      hxml:
+        - build-macro.hxml
